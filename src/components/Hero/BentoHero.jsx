@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  FileText, 
-  Check, 
-  MapPin, 
-  GraduationCap, 
-  ChevronDown, 
+import {
+  Github,
+  Linkedin,
+  Mail,
+  FileText,
+  Check,
+  MapPin,
+  GraduationCap,
+  ChevronDown,
   Terminal,
   Sparkles,
   ArrowUpRight
@@ -51,12 +51,12 @@ export default function BentoHero({ personal }) {
     <section className="w-full space-y-3">
       {/* 1. Primary Bento Profile Card */}
       <div className="rounded-2xl p-6 sm:p-7 bg-zinc-950/70 backdrop-blur-xl border border-white/10 shadow-2xl relative overflow-hidden transition-all duration-300">
-        
+
         {/* Subtle accent highlight line */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          
+
           {/* Avatar & Identity */}
           <div className="flex items-center gap-3.5">
             <div className="relative group">
@@ -70,7 +70,7 @@ export default function BentoHero({ personal }) {
               <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
                 {personal.name}
               </h1>
-              
+
               {/* Animated Rotating Role Title */}
               <div className="h-5 overflow-hidden flex items-center">
                 <AnimatePresence mode="wait">
@@ -186,7 +186,7 @@ export default function BentoHero({ personal }) {
 
       {/* 2. Bento Sub-Row: Compact Info Tiles */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        
+
         {/* Education Tile */}
         <div className="p-4 rounded-xl bg-zinc-950/60 backdrop-blur-md border border-white/10 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">

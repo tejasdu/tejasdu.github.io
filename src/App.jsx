@@ -2,7 +2,7 @@ import React from 'react'
 import CustomCursor from './components/CustomCursor/CustomCursor'
 import MinimalHero from './components/Hero/MinimalHero'
 import SharedWindow from './components/Tabs/SharedWindow'
-import DottedMapSideEffect from './components/BackgroundEffects/DottedMapSideEffect'
+import AsciiWorldMapBackground from './components/BackgroundEffects/AsciiWorldMapBackground'
 import { portfolioData } from './data/portfolioData'
 import { ArrowUp } from 'lucide-react'
 
@@ -17,8 +17,8 @@ export default function App() {
       {/* 1. Custom Smooth Circle Dot Cursor (OS cursor is completely hidden via CSS) */}
       <CustomCursor />
 
-      {/* 2. Minimal Background Effect: Dotted World Map on the side */}
-      <DottedMapSideEffect />
+      {/* 2. Clear ASCII World Map Background with Ann Arbor, MI Location Ping */}
+      <AsciiWorldMapBackground />
 
       {/* 3. Main Focused Narrow Column (Directly starts with Hero, no top bar) */}
       <main className="relative z-10 max-w-[680px] mx-auto px-4 pb-24 space-y-12">

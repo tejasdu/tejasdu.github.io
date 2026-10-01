@@ -113,12 +113,21 @@ export default function AsciiWorldMapBackground() {
         const distToSweep = Math.abs(x - sweepX)
         const sweepBoost = distToSweep < 90 ? (1 - distToSweep / 90) * 0.14 : 0
 
-        let alpha = cell.baseAlpha + mouseBoost + sweepBoost
+        // Distance to screen center (to de-clutter behind the main reading column)
+        const distFromCenter = Math.abs(x - width / 2)
+        let centerDampen = 1
+        if (distFromCenter < 400) {
+          // Smooth progressive falloff: faint in dead center (0.12), smoothly ramping to 1.0 at margins
+          const ratio = distFromCenter / 400
+          centerDampen = 0.12 + 0.88 * Math.pow(ratio, 1.8)
+        }
+
+        let alpha = (cell.baseAlpha + mouseBoost + sweepBoost) * centerDampen
 
         if (cell.isLand) {
           // Cartographic shimmer
           const shimmer = Math.sin(time * 1.2 + cell.c * 0.12 + cell.r * 0.25) * 0.04
-          alpha = Math.max(0.06, Math.min(0.9, alpha + shimmer))
+          alpha = Math.max(0.02, Math.min(0.9, alpha + shimmer))
 
           if (mouseBoost > 0.06 || sweepBoost > 0.06) {
             ctx.fillStyle = '#38bdf8' // Cyan highlight
@@ -128,7 +137,7 @@ export default function AsciiWorldMapBackground() {
         } else {
           // Ocean coordinates
           ctx.fillStyle = '#64748b'
-          alpha = Math.max(0.02, Math.min(0.2, alpha))
+          alpha = Math.max(0.01, Math.min(0.18, alpha))
         }
 
         ctx.globalAlpha = alpha
@@ -226,18 +235,18 @@ export default function AsciiWorldMapBackground() {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
-      {/* 1. Subtle Radial Scrim behind main reading column to guarantee 100% typography contrast */}
-      <div 
-        className="absolute inset-0 z-[1] pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle at 50% 36%, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.42) 58%, rgba(0, 0, 0, 0.10) 100%)'
-        }}
-      />
-
-      {/* 2. Interactive Canvas for ASCII World Map and Ann Arbor Ping */}
+      {/* 1. Interactive Canvas for ASCII World Map and Ann Arbor Ping */}
       <canvas
         ref={canvasRef}
-        className="w-full h-full relative z-[2] opacity-90 transition-opacity duration-1000"
+        className="w-full h-full relative z-[1] opacity-90 transition-opacity duration-1000"
+      />
+
+      {/* 2. Soft Center Reading Vignette Scrim (darkens the center reading column in front of the map) */}
+      <div 
+        className="absolute inset-0 z-[2] pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 740px 100% at 50% 50%, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.72) 48%, rgba(0, 0, 0, 0.2) 82%, transparent 100%)'
+        }}
       />
 
       {/* 3. Sleek Telemetry Corner Badges */}

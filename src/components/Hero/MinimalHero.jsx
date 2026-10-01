@@ -96,7 +96,7 @@ export default function MinimalHero({ personal }) {
           <div className="flex items-baseline gap-2">
             <span className="text-zinc-500 whitespace-nowrap select-none">//&nbsp;focus:</span>
             <span className="text-zinc-300 leading-relaxed">
-              Real-time systems, asynchronous pipelines, low-latency streaming
+              Real-time systems, asynchronous pipelines, low-latency streaming, solutions engineering
             </span>
           </div>
         </div>

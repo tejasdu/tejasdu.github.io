@@ -115,11 +115,12 @@ export default function AsciiWorldMapBackground() {
 
         // Distance to screen center (to de-clutter behind the main reading column)
         const distFromCenter = Math.abs(x - width / 2)
+        const fadeRadius = 460 // Starts fading further outwards (460px radius)
         let centerDampen = 1
-        if (distFromCenter < 400) {
-          // Smooth progressive falloff: faint in dead center (0.12), smoothly ramping to 1.0 at margins
-          const ratio = distFromCenter / 400
-          centerDampen = 0.12 + 0.88 * Math.pow(ratio, 1.8)
+        if (distFromCenter < fadeRadius) {
+          // Smooth progressive falloff: faint in center (0.08), ramping up towards 1.0 at fadeRadius
+          const ratio = distFromCenter / fadeRadius
+          centerDampen = 0.08 + 0.92 * Math.pow(ratio, 1.7)
         }
 
         let alpha = (cell.baseAlpha + mouseBoost + sweepBoost) * centerDampen
@@ -245,7 +246,7 @@ export default function AsciiWorldMapBackground() {
       <div 
         className="absolute inset-0 z-[2] pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 740px 100% at 50% 50%, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.72) 48%, rgba(0, 0, 0, 0.2) 82%, transparent 100%)'
+          background: 'radial-gradient(ellipse 920px 100% at 50% 50%, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.72) 48%, rgba(0, 0, 0, 0.15) 82%, transparent 100%)'
         }}
       />
 

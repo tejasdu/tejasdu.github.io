@@ -88,7 +88,7 @@ export default function MinimalHero({ personal }) {
         </p>
 
         <p className="text-zinc-400">
-          Outside of work, I'm deeply interested in exploring new cuisines, reading science fiction, and optimizing my fantasy football rosters.
+          Outside of work, I'm deeply interested in exploring new cuisines, reading science fiction, and watching F1.
         </p>
 
         {/* Minimal High-Signal Ledger (Only Focus) */}

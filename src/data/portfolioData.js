@@ -14,7 +14,7 @@ export const portfolioData = {
       linkedin: "https://www.linkedin.com/in/tejas-dumpeta/",
       email: "tejasd2022@gmail.com",
       phone: "+1 (734) 489-4824",
-      resume: "https://drive.google.com/file/d/1kYzKmdsygSzoWVMJsetHrp08JvvQ_79R/view?usp=sharing",
+      resume: "https://drive.google.com/file/d/1xhnspHIxKwvVYdZ-IncYfYQGKHef3mAQ/view?usp=sharing",
     },
     bentoHighlights: [
       {

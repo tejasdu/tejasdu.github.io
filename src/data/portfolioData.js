@@ -177,16 +177,31 @@ export const portfolioData = {
       tagline: "Real-time Formula 1 pit wall platform streaming live vehicle tracking and telemetry analytics for past F1 Grand Prix sessions.",
       liveUrl: "https://pitwall-f1.live/",
       githubUrl: "https://github.com/tejasdu/pitwall-telemetry-engine",
-      techStack: ["Python", "FastAPI", "WebSockets", "Docker", "Nginx", "OCI", "Pandas", "Pydantic"],
+      techStack: ["Python", "FastAPI", "WebSockets", "Docker", "Nginx", "OCI", "Pydantic"],
       highlights: [
         "Built a 60 FPS race replay engine in Python and FastAPI, streaming live vehicle positions, speed, and powertrain telemetry across all 20 cars via WebSockets with <15ms latency.",
         "Fused asynchronous multi-rate sensor streams (low-frequency GPS with high-frequency car sensors) using temporal interpolation to ensure fluid, jitter-free car movement on track.",
         "Processed and cached ~17 GB of telemetry data across 87 Grand Prix sessions, deploying containerized production services with Docker and Nginx on Oracle Cloud."
       ],
       deepDive: {
-        problem: "Multi-rate sensor streams (~3-4 Hz GPS vs. ~10-20 Hz powertrain sensors) produce temporal desynchronization and jitter across 20 simultaneous vehicles.",
-        solution: "Decoupled sensor streams with vectorized binary search interpolation and an in-memory ring buffer, backed by pre-warmed NVMe caching with exponential backoff.",
-        architecture: "Telemetry Ingestion (FastAPI/Pandas) → Binary Search Temporal Interpolator → WebSocket Ring Buffer (60 FPS, <15ms) → Nginx (OCI Arm64)."
+        problem: "Cars broadcast GPS coordinates slowly (~3–4 times per sec), but engine sensors broadcast quickly (~10–20 times per sec). Merging these raw numbers directly caused cars to stutter and teleport across the track instead of moving smoothly at 60 FPS.",
+        solution: "Built an asynchronous FastAPI pipeline that fills in timing gaps using linear interpolation. By pre-calculating smooth coordinates server-side into an in-memory ring buffer, we stream synchronized data for all 20 cars over a single low-latency WebSocket connection.",
+        architecture: `[Historical F1 Data Feeds] (~17 GB across 87 Grand Prix)
+          │
+          ▼  (Async Ingestion + Polite Rate-Limit Pacing)
+[FastAPI Telemetry Ingestion]
+          │
+          ▼  (Time-Alignment: 3 Hz GPS ⇄ 20 Hz Engine Sensors)
+[Temporal Interpolator] ──(Linear Interpolation & Binary Search)
+          │
+          ▼  (Pre-calculated 60 FPS Frames)
+[In-Memory Ring Buffer]
+          │
+          ▼  (Bidirectional WebSockets, <15ms Latency)
+[Nginx Reverse Proxy]  (Hosted on Oracle Cloud Infrastructure / OCI)
+          │
+          ▼  (Real-Time Track Canvas & Live Telemetry Graphs)
+[Client Pitwall UI (React)]`
       }
     },
     {
@@ -203,9 +218,23 @@ export const portfolioData = {
         "Integrated Google Places API to dynamically filter nearby restaurants and built Node.js endpoints with Supabase for instant tallying."
       ],
       deepDive: {
-        problem: "Group dining decisions suffer from analysis paralysis and slow asynchronous back-and-forth messaging.",
-        solution: "A gamified, synchronous voting room with live WebSocket state updates and geo-filtered restaurant discovery.",
-        architecture: "Next.js + Tailwind UI → Socket.io Event Bus → Node.js / Express API → Supabase PostgreSQL + Google Places API."
+        problem: "Picking a restaurant with a group of friends usually leads to endless group-chat debates and indecision. Standard voting apps feel slow and disconnected because participants can't see votes or card swipes happening in real time.",
+        solution: "Built a live multiplayer room system where friends join via private 6-digit room codes. Using WebSockets, restaurant card swipes and live vote counts synchronize instantly across all devices, eliminating refreshes and locking in a winning pick automatically.",
+        architecture: `[Lobby Host & Friends] ──(Join via 6-Digit Room Code)──▶ [Client Next.js App]
+                                                                  │
+                                                       (Location & Diet Filters)
+                                                                  ▼
+                                                      [Google Places API Engine]
+                                                                  │
+                                                       (Live Restaurant Deck)
+                                                                  ▼
+[Multiplayer Session Server] ◀──(Bi-directional WebSockets)── [Socket.io Event Bus]
+          │
+          ▼  (Real-Time Swipe Events & Vote Tallying)
+[Supabase PostgreSQL]
+          │
+          ▼  (Instant Consensus & Winning Restaurant Reveal)
+[All Connected Devices]`
       }
     },
     {
@@ -222,9 +251,21 @@ export const portfolioData = {
         "Architected backend API routes integrating OpenAI multi-step tool calling to validate strict degree requirements and stream custom React components to enhance course recommendation advice."
       ],
       deepDive: {
-        problem: "Academic degree audits are manual and error-prone, requiring hours of cross-referencing against complex prerequisites.",
-        solution: "Automated transcript OCR combined with structured LLM agent tool-calling against verified EECS course catalog schemas.",
-        architecture: "React + Next.js UI → FastAPI Python Backend → OpenAI Tool-Calling Agent → PostgreSQL Cache → Railway/Vercel."
+        problem: "Degree planning at U-M requires manually cross-referencing messy unofficial PDF transcripts against dozens of strict prerequisites, distribution requirements, and credit rules, which generic chatbots frequently hallucinate.",
+        solution: "Built a deterministic validation pipeline that parses uploaded PDF transcripts, checks completed credits against a structured EECS catalog database, and uses multi-step LLM tool calling to stream prerequisite-verified schedule cards directly into the UI.",
+        architecture: `[Student PDF Transcript]
+          │
+          ▼  (Text Extraction & Course Code Parsing)
+[FastAPI Ingestion Service]
+          │
+          ▼  (Cross-Reference Against Degree Catalog)
+[PostgreSQL Database] ──(500+ EECS Courses, Prerequisites & Core Rules)
+          │
+          ▼  (Verified History & Prerequisite Tree)
+[OpenAI Agent Engine] ──(Multi-Step Tool Calling for Degree Audit)
+          │
+          ▼  (Server-Sent Events / SSE Stream)
+[Interactive Course Cards UI] (Next.js & React on Vercel)`
       }
     },
     {
@@ -241,9 +282,19 @@ export const portfolioData = {
         "Integrated Bluetooth Low Energy (BLE) communication protocols & Node.js API pairing flows to establish persistent, low-latency device pairing with our prosthetic arm firmware and synchronize real-time motor telemetry."
       ],
       deepDive: {
-        problem: "Pediatric prosthetic devices require rapid calibration and intuitive, low-latency motor feedback without complicated setup steps.",
-        solution: "Low-overhead BLE communication protocol paired with an accessible, friendly mobile interface designed specifically for young patients.",
-        architecture: "React Native iOS App → CoreBluetooth / BLE Protocol → Prosthetic Arm Firmware ⇄ Node.js / Express Auth API."
+        problem: "Calibrating prosthetic arms traditionally requires clinical software and tethered cables. For pediatric patients, these setups are intimidating, rigid, and fail to provide quick, encouraging visual feedback during motor grip training.",
+        solution: "Engineered a wireless, child-friendly iOS companion app that automatically pairs with arm firmware over Bluetooth Low Energy (BLE). It streams real-time grip tension and sensor metrics into gamified calibration exercises that keep young patients engaged.",
+        architecture: `[Smart Prosthetic Arm Hardware] (Grip Motors & Pressure Sensors)
+          │
+          ▼  (Wireless Advertising & Auto-Handshake)
+[Bluetooth Low Energy (BLE)] ──(CoreBluetooth GATT Service)
+          │
+          ▼  (Live Grip Tension & Motor Telemetry Stream)
+[React Native iOS Companion App]
+          │
+          ├────────────────────────────────────────┐
+          ▼ (Real-time Visual Feedback)            ▼ (Auth & Calibration Profiles)
+[Gamified Calibration UI]                 [Node.js / Express Backend]`
       }
     }
   ],

@@ -116,32 +116,45 @@ export default function NarrowProjects({ projects }) {
                   transition={{ duration: 0.25 }}
                   className="overflow-hidden"
                 >
-                  <div className="mt-3 p-3.5 rounded-xl bg-zinc-950 border border-zinc-800/80 space-y-2.5 text-xs">
-                    <div>
-                      <span className="font-mono text-zinc-400 block font-semibold mb-0.5">
-                        // Technical Challenge:
-                      </span>
-                      <p className="text-zinc-300 leading-relaxed">
-                        {proj.deepDive.problem}
-                      </p>
+                  <div className="mt-3 p-4 rounded-xl bg-zinc-950/90 border border-zinc-800/80 space-y-3 text-xs shadow-inner">
+                    {/* Header bar */}
+                    <div className="flex items-center justify-between pb-1 border-b border-zinc-800/60 font-mono text-[11px] text-zinc-400">
+                      <span className="font-medium text-zinc-300">// system design & trade-offs</span>
+                      <span className="text-[10px] text-zinc-500">architecture</span>
                     </div>
 
-                    <div>
-                      <span className="font-mono text-zinc-400 block font-semibold mb-0.5">
-                        // Engineering Solution:
-                      </span>
-                      <p className="text-zinc-300 leading-relaxed">
-                        {proj.deepDive.solution}
-                      </p>
+                    {/* Challenge & Solution Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      <div className="p-3 rounded-lg bg-zinc-900/40 border border-zinc-800/60 space-y-1">
+                        <span className="font-mono text-[11px] text-amber-400/90 font-medium tracking-wide block">
+                          // Bottleneck:
+                        </span>
+                        <p className="text-zinc-300 leading-relaxed text-[12px] font-normal">
+                          {proj.deepDive.problem}
+                        </p>
+                      </div>
+
+                      <div className="p-3 rounded-lg bg-zinc-900/40 border border-zinc-800/60 space-y-1">
+                        <span className="font-mono text-[11px] text-emerald-400/90 font-medium tracking-wide block">
+                          // Architectural Solution:
+                        </span>
+                        <p className="text-zinc-300 leading-relaxed text-[12px] font-normal">
+                          {proj.deepDive.solution}
+                        </p>
+                      </div>
                     </div>
 
-                    <div>
-                      <span className="font-mono text-cyan-400 block font-semibold mb-0.5">
-                        // Data Flow & Topology:
-                      </span>
-                      <p className="font-mono text-[11px] text-zinc-300 bg-black/70 p-2 rounded border border-zinc-800">
+                    {/* Pipeline Topology Block */}
+                    <div className="p-3 rounded-lg bg-zinc-900/50 border border-zinc-800/70 space-y-2">
+                      <div className="flex items-center justify-between pb-1 border-b border-zinc-800/40">
+                        <span className="font-mono text-[11px] text-cyan-400 font-medium tracking-wide">
+                          // Pipeline Topology:
+                        </span>
+                        <span className="text-[10px] font-mono text-zinc-500">end-to-end data flow</span>
+                      </div>
+                      <pre className="font-mono text-[11px] text-zinc-200 bg-black/90 p-3 sm:p-4 rounded-lg border border-zinc-800/80 leading-relaxed overflow-x-auto whitespace-pre">
                         {proj.deepDive.architecture}
-                      </p>
+                      </pre>
                     </div>
                   </div>
                 </motion.div>

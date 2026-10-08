@@ -96,7 +96,7 @@ export const portfolioData = {
       techStack: ["Python", "FastAPI", "NDJSON", "PostgreSQL", "AWS", "OpenShift", "Docker", "REST APIs"],
       achievements: [
         "Architected automated ETL pipelines integrating Sunbird DC Track and Netbox APIs to synchronize server inventory across 23,000+ network devices in real time.",
-        "Redesigned Wi-Fi analytics backend by replacing legacy Splunk polling with FastAPI NDJSON streaming, enabling low-latency, real-time delivery of RADIUS queries."
+        "Redesigned the backend of a Wi-Fi Usage Data analytics application by replacing a legacy Splunk polling with FastAPI NDJSON streaming, enabling low-latency, real-time delivery of RADIUS queries."
       ]
     },
     {

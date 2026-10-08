@@ -174,14 +174,14 @@ export const portfolioData = {
       title: "F1 Pitwall Telemetry Engine",
       badge: "Real-Time Systems",
       category: "Systems & Infrastructure",
-      tagline: "60 FPS real-time telemetry streaming engine broadcasting sub-frame synchronized spatial coordinates and powertrain metrics across 20 vehicles with <15ms client latency.",
+      tagline: "Real-time Formula 1 pit wall platform streaming live vehicle tracking and telemetry analytics at 60 FPS.",
       liveUrl: "https://pitwall-f1.live/",
       githubUrl: "https://github.com/tejasdu/pitwall-telemetry-engine",
       techStack: ["Python", "FastAPI", "WebSockets", "Docker", "Nginx", "OCI", "Pandas", "Pydantic"],
       highlights: [
-        "Architected a 60 FPS real-time telemetry streaming engine using Python 3.12, FastAPI, and WebSockets broadcasting synchronized telemetry across 20 vehicles with <15ms latency.",
-        "Synchronized multi-rate asynchronous time-series streams (~3–4 Hz GPS, ~10–20 Hz sensors) via binary search and linear temporal interpolation for jitter-free playback.",
-        "Engineered an offline pre-warmed NVMe caching pipeline ingesting ~17 GB across 87 Grand Prix, deployed via Docker Compose on Oracle Cloud with Nginx."
+        "Built an asynchronous streaming backend with FastAPI and WebSockets broadcasting live telemetry across all 20 cars with <15ms latency.",
+        "Synchronized mismatching time-series streams (~3–4 Hz GPS vs. ~10–20 Hz sensors) via linear interpolation and binary search for smooth playback.",
+        "Engineered a pre-warmed NVMe caching pipeline ingesting ~17 GB of telemetry data across 87 Grand Prix, deployed on Oracle Cloud with Docker."
       ],
       deepDive: {
         problem: "Multi-rate sensor streams (~3-4 Hz GPS vs. ~10-20 Hz powertrain sensors) produce temporal desynchronization and jitter across 20 simultaneous vehicles.",
@@ -194,13 +194,13 @@ export const portfolioData = {
       title: "Selectaurant",
       badge: "Real-Time Multiplayer",
       category: "Full-Stack & Systems",
-      tagline: "Real-time multiplayer decision engine that lets groups create private lobbies, filter restaurants via Google Places API, and vote via WebSockets.",
+      tagline: "Real-time multiplayer voting app that eliminates group indecision when picking where to eat.",
       liveUrl: "https://selectaraunt.up.railway.app/",
       githubUrl: "https://github.com/MishanGagnon/restaurant",
       techStack: ["Next.js", "Node.js", "TypeScript", "Tailwind CSS", "Supabase", "Socket.io", "Google Places API"],
       highlights: [
-        "Architected event-driven WebSocket communication layers with Socket.io to sync live lobby states and derived vote counts in real time.",
-        "Developed Node.js APIs to handle lobby permissions and validate server-side votes in Supabase with an animated card carousel leaderboard."
+        "Architected live multiplayer voting lobbies with Socket.io WebSockets to synchronize member votes and real-time room states.",
+        "Integrated Google Places API to dynamically filter nearby restaurants and built Node.js endpoints with Supabase for instant tallying."
       ],
       deepDive: {
         problem: "Group dining decisions suffer from analysis paralysis and slow asynchronous back-and-forth messaging.",
@@ -213,13 +213,13 @@ export const portfolioData = {
       title: "UMazing • AI Academic Advisor",
       badge: "AI & Distributed Workflow",
       category: "AI & Systems",
-      tagline: "Intelligent academic advisor with multi-step agentic tool calling to validate student transcripts against strict degree rules.",
+      tagline: "Conversational AI degree advisor that audits student transcripts and generates prerequisite-verified course recommendations.",
       devpostUrl: "https://devpost.com/software/umazing",
       githubUrl: "https://github.com/MishanGagnon/mhacks2024",
       techStack: ["Next.js", "TypeScript", "Python", "PostgreSQL", "FastAPI", "OpenAI", "Railway", "Vercel"],
       highlights: [
-        "Scraped 500+ EECS course catalogs and built PDF transcript ingestion services with PostgreSQL caching for conversational continuity.",
-        "Architected backend API routes integrating OpenAI multi-step tool calling to validate strict degree requirements and stream course recommendations."
+        "Parsed 500+ EECS course catalogs and built PDF transcript ingestion services backed by PostgreSQL caching for conversational continuity.",
+        "Architected backend API routes integrating OpenAI multi-step tool calling to validate strict degree requirements and stream custom React components to enhance course recommendation advice."
       ],
       deepDive: {
         problem: "Academic degree audits are manual and error-prone, requiring hours of cross-referencing against complex prerequisites.",
@@ -232,13 +232,13 @@ export const portfolioData = {
       title: "Michigan Neuroprosthetics - Pediatric Device Interface",
       badge: "Hardware & Telemetry",
       category: "Mobile & Embedded Systems",
-      tagline: "iOS application and backend telemetry hub interfacing with pediatric prosthetic arm firmware via Bluetooth Low Energy (BLE).",
+      tagline: "iOS companion app and telemetry interface connecting pediatric patients with smart prosthetic arm hardware.",
       liveUrl: null,
       githubUrl: null,
       techStack: ["React Native", "Node.js", "Express.js", "BLE", "REST APIs", "Figma"],
       highlights: [
-        "Designed iOS app flows in Figma and React Native, building Node.js APIs and Bluetooth Low Energy (BLE) pairing flows for pediatric patients.",
-        "Integrated Bluetooth Low Energy communication protocols to establish persistent, low-latency device pairing and synchronize real-time motor telemetry."
+        "Designed iOS app flows & User Journey Maps in Figma and React Native to scaffold the app UI.",
+        "Integrated Bluetooth Low Energy (BLE) communication protocols & Node.js API pairing flows to establish persistent, low-latency device pairing with our prosthetic arm firmware and synchronize real-time motor telemetry."
       ],
       deepDive: {
         problem: "Pediatric prosthetic devices require rapid calibration and intuitive, low-latency motor feedback without complicated setup steps.",

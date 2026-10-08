@@ -7,7 +7,7 @@ export const portfolioData = {
     avatar: asset("/pfp-focus.jpg"),
     statusBadge: "Open to Software Engineering Roles",
     location: "Ann Arbor, MI • United States",
-    shortBio: "Product and solutions-oriented software engineer who loves to identify ambiguous stakeholder needs and transform them into actionable execution plans to create real business impact.",
+    shortBio: "Product and solutions-oriented engineer who loves the technical challenge of identifying ambiguous stakeholder needs and transforming them into actionable solutions to drive real business impact.",
     extendedBio: "I recently completed a B.S. in Computer Science at the University of Michigan and am looking for the next step in my career. I thrive in environments where I can collaborate across teams, continuously learn, and problem-solve in fast-paced situations.",
     socials: {
       github: "https://github.com/tejasdu",

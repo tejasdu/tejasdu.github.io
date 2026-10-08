@@ -80,7 +80,7 @@ export default function MinimalHero({ personal }) {
       {/* Expanded, Focused Editorial Storytelling (User's Exact Bio) */}
       <div className="space-y-4 text-left text-[15px] sm:text-[16px] leading-[1.75] text-zinc-300 font-normal">
         <p>
-          I am a product and solutions-oriented software engineer who loves to identify ambiguous stakeholder needs and transform them into actionable execution plans to create real business impact.
+          I am a product and solutions-oriented engineer who loves the technical challenge of identifying ambiguous stakeholder needs and transforming them into actionable solutions to drive real business impact.
         </p>
 
         <p>

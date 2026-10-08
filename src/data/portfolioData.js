@@ -129,7 +129,7 @@ export const portfolioData = {
       summary: "Provided frontline technical consulting and cross-system incident diagnostics across 19+ campus departments.",
       techStack: ["Technical Consulting", "Incident Management", "Stakeholder Triage", "Linux", "macOS", "Diagnostics"],
       achievements: [
-        "Delivered frontline technical consulting and diagnostic resolutions for 50,000+ faculty and students across 19+ campus departments and 3 campus computing sites.",
+        "Delivered technical diagnostic resolutions on university-managed applications & software for faculty and students across 19+ campus departments and 3 campus computing sites to aid in smooth business operations.",
         "Triaged and resolved complex system incidents across university enterprise software and macOS, Windows, and Linux environments."
       ]
     },

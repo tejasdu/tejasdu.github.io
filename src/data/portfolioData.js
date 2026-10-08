@@ -174,14 +174,14 @@ export const portfolioData = {
       title: "F1 Pitwall Telemetry Engine",
       badge: "Real-Time Systems",
       category: "Systems & Infrastructure",
-      tagline: "Real-time Formula 1 pit wall platform streaming live vehicle tracking and telemetry analytics at 60 FPS.",
+      tagline: "Real-time Formula 1 pit wall platform streaming live vehicle tracking and telemetry analytics for past F1 Grand Prix sessions.",
       liveUrl: "https://pitwall-f1.live/",
       githubUrl: "https://github.com/tejasdu/pitwall-telemetry-engine",
       techStack: ["Python", "FastAPI", "WebSockets", "Docker", "Nginx", "OCI", "Pandas", "Pydantic"],
       highlights: [
-        "Built an asynchronous streaming backend with FastAPI and WebSockets broadcasting live telemetry across all 20 cars with <15ms latency.",
-        "Synchronized mismatching time-series streams (~3–4 Hz GPS vs. ~10–20 Hz sensors) via linear interpolation and binary search for smooth playback.",
-        "Engineered a pre-warmed NVMe caching pipeline ingesting ~17 GB of telemetry data across 87 Grand Prix, deployed on Oracle Cloud with Docker."
+        "Built a 60 FPS race replay engine in Python and FastAPI, streaming live vehicle positions, speed, and powertrain telemetry across all 20 cars via WebSockets with <15ms latency.",
+        "Fused asynchronous multi-rate sensor streams (low-frequency GPS with high-frequency car sensors) using temporal interpolation to ensure fluid, jitter-free car movement on track.",
+        "Processed and cached ~17 GB of telemetry data across 87 Grand Prix sessions, deploying containerized production services with Docker and Nginx on Oracle Cloud."
       ],
       deepDive: {
         problem: "Multi-rate sensor streams (~3-4 Hz GPS vs. ~10-20 Hz powertrain sensors) produce temporal desynchronization and jitter across 20 simultaneous vehicles.",

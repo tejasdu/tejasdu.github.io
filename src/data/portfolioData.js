@@ -163,7 +163,7 @@ export const portfolioData = {
       summary: "Optimized aerial dataset processing algorithms for enterprise geospatial 3D scene reconstruction.",
       techStack: ["Python", "Geospatial Data", "Image Processing", "Algorithms", "Optimization"],
       achievements: [
-        "Built an aerial photo deduplication tool that accelerated post-mission image processing by 20% for enterprise 3D geospatial site reconstruction."
+        "Built an aerial photo deduplication tool that accelerated post-drone mission image processing by 20% for worksite visualization in an enterprise 3D geospatial site analytics platform."
       ]
     }
   ],
